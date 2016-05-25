@@ -11,3 +11,7 @@
 @implementation ChatFace
 
 @end
+
+@implementation ChatFaceGroup
+
+@end

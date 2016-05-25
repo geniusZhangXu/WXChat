@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TLUser.h"
+#import "ZXUser.h"
 
 @interface TLUserHelper : NSObject
 
-@property (nonatomic, strong) TLUser *user;
+@property (nonatomic, strong) ZXUser *user;
 
 + (TLUserHelper *)sharedUserHelper;
 

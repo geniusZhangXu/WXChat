@@ -20,10 +20,10 @@ static TLUserHelper *userHelper = nil;
     return userHelper;
 }
 
-- (TLUser *) user
+- (ZXUser *) user
 {
     if (_user == nil) {
-        _user = [[TLUser alloc] init];
+        _user = [[ZXUser alloc] init];
         _user.username = @"Bay、栢";// 名字
         _user.userID = @"li-bokun";// ID
         _user.avatarURL = @"0.jpg";// 图片

@@ -10,4 +10,10 @@
 
 @interface ChatFaceHeleper : NSObject
 
+@property (nonatomic, strong) NSMutableArray *faceGroupArray;
+
++ (ChatFaceHeleper *) sharedFaceHelper;
+
+- (NSArray *) getFaceArrayByGroupID:(NSString *)groupID;
+
 @end

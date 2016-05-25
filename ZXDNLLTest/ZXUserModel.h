@@ -10,4 +10,10 @@
 
 @interface ZXUserModel : NSObject
 
+@property (nonatomic, strong) NSString *from;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSString *message;
+@property (nonatomic, assign) int messageCount;
+@property (nonatomic, strong) NSURL *avatarURL;
+
 @end

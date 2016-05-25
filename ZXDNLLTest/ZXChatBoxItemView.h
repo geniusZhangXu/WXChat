@@ -10,4 +10,14 @@
 
 @interface ZXChatBoxItemView : UIView
 
+
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *imageName;
+
++ (ZXChatBoxItemView *) createChatBoxMoreItemWithTitle:(NSString *)title
+                                             imageName:(NSString *)imageName;
+
+- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+
+
 @end

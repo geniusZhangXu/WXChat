@@ -7,7 +7,13 @@
 //
 
 #import "CommonTableViewCell.h"
-
+#import "ZXUserModel.h"
 @interface ZXTableViewCell : CommonTableViewCell
+
+@property(nonatomic,strong) ZXUserModel * userModel;
+@property (nonatomic, strong) UIImageView *avatarImageView;
+@property (nonatomic, strong) UILabel *usernameLabel;
+@property (nonatomic, strong) UILabel *dateLabel;
+@property (nonatomic, strong) UILabel *messageLabel;
 
 @end

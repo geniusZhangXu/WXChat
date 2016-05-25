@@ -9,6 +9,14 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import "zxHeader.h"
+
+#pragma mark - Category
+#import "NSString+TL.h"
+#import "UIDevice+TL.h"
+#import "UIImage+TL.h"
+#import "UIView+TL.h"
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

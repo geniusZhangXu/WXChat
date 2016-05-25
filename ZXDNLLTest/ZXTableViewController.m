@@ -9,10 +9,12 @@
 #import "ZXTableViewController.h"
 #import "ZXTableViewCell.h"
 #import "XYDJViewController.h"
-
+#import "ZXUserModel.h"
+#import "ZXUser.h"
 @interface ZXTableViewController ()
 
 @property(nonatomic,strong) NSArray * dataArray;
+@property(nonatomic,strong) XYDJViewController * chatVC;
 
 @end
 
@@ -23,18 +25,33 @@
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    //  =======  关于注册cell  如果使用XIB写的话就用 NIB 注册  用纯代码创建的话就用 Class 注册， Sroryboard 没有 NIB 文件
+    _dataArray = [self getTestData];
     
-    // [self.tableView registerNib:[UINib nibWithNibName:@"ZXTableViewCell" bundle:nil] forCellReuseIdentifier:@"ZXidentifier"];
+    /**
+     *  你在注册cell 的时候其实就会调用 cell 的 init 方法，后面你下载好数据，在赋给cell
+     */
+    [self.tableView registerClass:[ZXTableViewCell class] forCellReuseIdentifier:@"ZXTableViewCell"];
     
-    // [self.tableView  registerClass:[ZXTableViewCell class] forCellReuseIdentifier:@"ZXidentifier"];
+}
 
-     _dataArray= @[@"张旭1",@"张旭2",@"张旭3",@"张旭4",@"张旭5"];
-
+#pragma mark - Private Methods
+- (NSMutableArray *) getTestData
+{
+    
+    NSMutableArray *models = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    ZXUserModel *item1 = [[ZXUserModel alloc] init];
+    item1.from = [NSString stringWithFormat:@"文小雨"];
+    item1.message = @"帅哥你好！！";
+    item1.avatarURL = [NSURL URLWithString:@"10.jpeg"];
+    item1.messageCount = 0;
+    item1.date = [NSDate date];
+    [models addObject:item1];
+    return models;
+    
 }
 
 #pragma mark - Table view data source
@@ -47,27 +64,61 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    ZXTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZXidentifier" ];
-    if(!cell){
+    /**
+     *   使用 dequeueReusableCellWithIdentifier:@"ZXTableViewCell" forIndexPath 可以不判断是否为空，但必须的注册
+         要是使用 dequeueReusableCellWithIdentifier 可以不注册，但必须得判断
+     */
     
-        cell=[[ZXTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ZXidentifier"];
+    ZXTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZXTableViewCell" forIndexPath:indexPath];
     
-    }
+    [cell setUserModel:_dataArray[indexPath.row]];
     
-    NSString * name = _dataArray[indexPath.row];
-    cell.nameLabel.text=name;
     return cell;
-    
 }
 
 #pragma mark  cell 点击界面之间的传值
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+     
+    /**
+     *   点击消息列表，这里进入一个聊天消息详情的界面。
+     */
+    if (_chatVC == nil) {
+        _chatVC = [[ XYDJViewController  alloc] init];
+    }
+    /**
+     下面的这个 TLUser 就是具体到用户的一个数据 model
+     */
+    ZXUser *user7 = [[ZXUser alloc] init];
+    user7.username = @"文小雨";
+    user7.userID = @"XB";
+    user7.nikename = @"小贝";
+    user7.avatarURL = @"10.jpeg";
+    _chatVC.user = user7;
     
-    ZXTableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    [XYDJViewController buttonTag:  cell.nameLabel.text];
-    
+    // 隐藏底部的buttomBar 当 push 的时候
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:_chatVC animated:YES];
+    /**
+     * 不加下面此句时，在二级栏目点击返回时，此行会由选中状态慢慢变成非选中状态。
+     加上此句，返回时直接就是非选中状态。
+     */
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+
 }
+
+#pragma mark - UITableViewDelegate
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 63;
+}
+
+-(UIView * )tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView * view = [[UIView alloc]init];
+    return view;
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -112,6 +163,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+//
+-(void) viewDidDisappear:(BOOL)animated
+{
+    /**
+     *  显现tabbar
+     */
+    [super viewDidDisappear:animated];
+    [self setHidesBottomBarWhenPushed:NO];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

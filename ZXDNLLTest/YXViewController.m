@@ -17,10 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     NSLog(@"%@",_YXString);
     
 }
+
+
 - (IBAction)PopController:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];

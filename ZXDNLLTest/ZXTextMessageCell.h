@@ -10,4 +10,6 @@
 
 @interface ZXTextMessageCell : ZXMessageCell
 
+@property (nonatomic, strong) UILabel *messageTextLabel;
+
 @end

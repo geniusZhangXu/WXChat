@@ -4,7 +4,8 @@
 //
 //  Created by mxsm on 16/4/27.
 //  Copyright © 2016年 mxsm. All rights reserved.
-//
+//   关于XMPP的知识  http://www.cocoachina.com/ios/20140922/9714.html
+//   关于 OpenFire  http://m.blog.csdn.net/article/details?id=51108532
 
 #import "AppDelegate.h"
 

@@ -7,7 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZXChatBoxItemView.h"
+
+typedef NS_ENUM(NSInteger, TLChatBoxItem) {
+    TLChatBoxItemAlbum = 0,
+    TLChatBoxItemCamera,
+};
+
+@class ZXChatBoxMoreView;
+@protocol ZXChatBoxMoreViewDelegate <NSObject>
+
+- (void)chatBoxMoreView:(ZXChatBoxMoreView *)chatBoxMoreView didSelectItem:(TLChatBoxItem)itemType;
+
+@end
 
 @interface ZXChatBoxMoreView : UIView
+
+
+@property (nonatomic, strong) id<ZXChatBoxMoreViewDelegate>delegate;
+@property (nonatomic, strong) NSMutableArray *items;
 
 @end

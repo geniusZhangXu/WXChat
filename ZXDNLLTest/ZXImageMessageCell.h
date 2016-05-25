@@ -10,4 +10,7 @@
 
 @interface ZXImageMessageCell : ZXMessageCell
 
+@property (nonatomic, strong) UIImageView *messageImageView;
+
+
 @end

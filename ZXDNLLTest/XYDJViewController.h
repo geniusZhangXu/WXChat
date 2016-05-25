@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZXUser.h"
 
 @interface XYDJViewController : UIViewController
 
-+(void)buttonTag:(id)sender;
+/**
+ *  聊天用户数据模型
+ */
+@property (nonatomic, strong)ZXUser *user;
 
 @end

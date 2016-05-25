@@ -10,4 +10,9 @@
 
 @interface ZXChatHelper : NSObject
 
+@property (nonatomic, strong) NSMutableArray *faceGroupArray;
+
+
++ (NSAttributedString *) formatMessageString:(NSString *)text;
+
 @end

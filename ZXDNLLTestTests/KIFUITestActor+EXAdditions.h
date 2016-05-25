@@ -10,4 +10,8 @@
 
 @interface KIFUITestActor (EXAdditions)
 
+- (void)navigateToLoginPage;
+- (void)returnToLoggedOutHomeScreen;
+
+
 @end

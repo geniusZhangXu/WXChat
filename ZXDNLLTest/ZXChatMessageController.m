@@ -83,7 +83,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.data.count;
+    return _data.count;
 }
 
 
@@ -112,11 +112,12 @@
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
-    if (_delegate && [_delegate respondsToSelector:@selector(didTapChatMessageView:)]) {
-        
-        [_delegate didTapChatMessageView:self];
-        
-    }
+//    if (_delegate && [_delegate respondsToSelector:@selector(didTapChatMessageView:)]) {
+//        
+//        [_delegate didTapChatMessageView:self];
+//        
+//    }
+    
 }
 
 #pragma mark - Event Response

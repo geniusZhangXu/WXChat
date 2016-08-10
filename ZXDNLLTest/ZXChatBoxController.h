@@ -15,9 +15,10 @@
 
 @protocol ZXChatBoxViewControllerDelegate <NSObject>
 
+// chatBoxView 高度改变
 - (void)chatBoxViewController:(ZXChatBoxController *)chatboxViewController
         didChangeChatBoxHeight:(CGFloat)height;
-
+// 发送消息
 - (void) chatBoxViewController:(ZXChatBoxController *)chatboxViewController
                    sendMessage:(ZXMessageModel *)message;
 

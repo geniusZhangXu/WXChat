@@ -19,10 +19,10 @@
 
 - (void)beforeAll {
     ////
-    [tester tapViewWithAccessibilityLabel:@"Settings"];
-    [tester setOn:YES forSwitchWithAccessibilityLabel:@"Debug Mode"];
-    [tester tapViewWithAccessibilityLabel:@"Clear History"];
-    [tester tapViewWithAccessibilityLabel:@"Clear"];
+//    [tester tapViewWithAccessibilityLabel:@"Settings"];
+//    [tester setOn:YES forSwitchWithAccessibilityLabel:@"Debug Mode"];
+//    [tester tapViewWithAccessibilityLabel:@"Clear History"];
+//    [tester tapViewWithAccessibilityLabel:@"Clear"];
     
 }
 
@@ -30,12 +30,12 @@
 
 -(void)testzhangxuone
 {
-    // 可以在这里添加自己需要的测试的内容！
-    int a = 0;
-    if (a==0) {
-        NSLog(@"you are successful");
-        
-    }
+//    // 可以在这里添加自己需要的测试的内容！
+//    int a = 0;
+//    if (a==0) {
+//        NSLog(@"you are successful");
+//        
+//    }
 }
 
 /* 
